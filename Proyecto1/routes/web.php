@@ -44,5 +44,4 @@ Route::get('pruebaProductos', function () {
     $iphone13 = Product::find(51);
     $iphone13->delete();
     dd($iphone13); */
-
 });

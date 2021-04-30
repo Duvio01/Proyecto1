@@ -17,25 +17,20 @@ class Products_has_categoriesSeeder extends Seeder
      */
     public function run()
     {
-        $products = Product::all();
-        foreach ($products as $product) {
-            $product->id;
-        }
-        $categories = Category::all();
-        foreach ($categories as $category) {
-            $category->id;
-        }
-
         $faker = Faker::create();
-        for ($i=0; $i < 50 ; $i++) { 
-            DB::table('products_has_categories')->insert([
-                'created_at' => $faker->dateTime($max = 'now', $timezone = null),
-                'updated_at' => $faker->dateTime($max = 'now', $timezone = null),
-                'category_id' => 'category'. $i,
-                'product_id' => 'product' . $i
-            ]);
+        for ($i = 0; $i < 50; $i++) {
+            $products = Product::where('id', $i)->get();
+            foreach ($products as $product) {
+                $categories = Category::where('id', $i)->get();
+                foreach ($categories as $category) {
+                    DB::table('products_has_categories')->insert([
+                        'created_at' => $faker->dateTime($max = 'now', $timezone = null),
+                        'updated_at' => $faker->dateTime($max = 'now', $timezone = null),
+                        'category_id' => $product->id,
+                        'product_id' => $category->id
+                    ]);
+                }
+            }
         }
-
-
     }
 }
