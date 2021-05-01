@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -44,4 +46,16 @@ Route::get('pruebaProductos', function () {
     $iphone13 = Product::find(51);
     $iphone13->delete();
     dd($iphone13); */
+
+   /*  $categories = Product::find(1);
+
+    dd($categories->categories);
+ */
+    /* $product = Category::find(3);
+
+    dd($product->products); */
+
+   /*  $image = Product::find(3);
+
+    dd($image->images()->get()); */
 });

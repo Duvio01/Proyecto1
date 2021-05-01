@@ -2,13 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Models\Image;
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\ProductHasCategory;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use Illuminate\Support\Facades\DB;
-use App\Models\Product;
 
-class ImagesSeeder extends Seeder
+class ProductsHasCategoriesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,15 +18,14 @@ class ImagesSeeder extends Seeder
      */
     public function run()
     {
-
-        Image::factory(50)->create();
+        ProductHasCategory::factory(50)->create();
 
         /* $faker = Faker::create();
         for ($i = 0; $i < 50; $i++) {
-            DB::table('images')->insert([
+            DB::table('products_has_categories')->insert([
                 'created_at' => $faker->dateTime($max = 'now', $timezone = null),
                 'updated_at' => $faker->dateTime($max = 'now', $timezone = null),
-                'url' => $faker->imageUrl(),
+                'category_id' => $faker->numberBetween(1, Category::all()->count()),
                 'product_id' => $faker->numberBetween(1, Product::all()->count())
             ]);
         } */

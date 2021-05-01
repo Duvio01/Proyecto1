@@ -9,7 +9,15 @@ class Product extends Model
 {
     use HasFactory;
 
-    function foundId() {
-        $id = Product::where('id')->get();
+    public function images() {
+        return $this->hasMany(Image::class);
+    }
+
+    public function orders() {
+        return $this->belongsToMany(Order::class, 'orders_has_products');
+    }
+
+    public function categories() {
+        return $this->belongsToMany(Category::class, 'products_has_categories');
     }
 }
